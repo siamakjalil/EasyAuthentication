@@ -30,6 +30,46 @@ namespace EasyAuthentication.Repositories
             _context = context;
             _jwtSettings = jwtSettings.Value; 
         }
+
+        public async Task<string> Register(RegisterDto registerDto)
+        {
+            var authKey = 5.GenerateAuthCode();
+            var model = _context.Users.FirstOrDefault(u => 
+                (string.IsNullOrEmpty(registerDto.MobileNumber) || u.MobileNumber == registerDto.MobileNumber) &&
+                (string.IsNullOrEmpty(registerDto.Email) || u.Email == registerDto.Email));
+            if (model == null)
+            {
+                model = new User()
+                {
+                    IsActive = false,
+                    MobileNumber = registerDto.MobileNumber,
+                    ActiveCode = authKey,
+                    UniqueId = Guid.NewGuid(),
+                    Id = Guid.NewGuid(),
+                    Email = registerDto.Email,
+                    BornDateTime = registerDto.BornDateTime,
+                    FirstName = registerDto.FirstName,
+                    Image = registerDto.Image,
+                    UserType = registerDto.UserType,
+                    LastName = registerDto.LastName,
+                };
+                await _context.Users.AddAsync(model);
+                await _context.SaveChangesAsync();
+                return authKey;
+            }
+            else
+            {
+                if (model.IsActive)
+                {
+                    return "";
+                }
+                model.ActiveCode = authKey;
+                _context.Users.Update(model);
+                await _context.SaveChangesAsync();
+                return authKey;
+            } 
+        }
+
         public async Task<SendAuthCodeResponse> SendAuthCode(SendAuthCode sendAuthCode)
         {
             var authKey = 5.GenerateAuthCode();
@@ -81,7 +121,9 @@ namespace EasyAuthentication.Repositories
             {
                 return null;
             }
-
+            model.IsActive = true;
+            _context.Users.Update(model);
+            await _context.SaveChangesAsync();
             return await SetLoggedInUserModel(model,  browser, ip);
         }
 

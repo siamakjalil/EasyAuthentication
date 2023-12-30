@@ -5,6 +5,7 @@ namespace EasyAuthentication.Contracts
 {
     public interface IAuthenticationRepository
     {
+        Task<string> Register(RegisterDto registerDto);
         Task<SendAuthCodeResponse> SendAuthCode(SendAuthCode login);
         Task<LoggedInUser> LoginByAuthCode(LoginByAuthCode loginByAuthCode, string browser, string ip);
         Task<LoggedInUser> LoginByPass(LoginByPass loginByAuthCode, string browser, string ip);

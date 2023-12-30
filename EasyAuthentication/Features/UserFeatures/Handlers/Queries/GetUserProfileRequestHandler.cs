@@ -1,13 +1,10 @@
 ﻿using AutoMapper;
-
-using MediatR;
-using EasyAuthentication.Constants;
 using EasyAuthentication.Contracts;
 using EasyAuthentication.Features.User.Requests.Queries;
-using EasyAuthentication.Migrations;
 using EasyAuthentication.Models.Response;
+using MediatR;
 
-namespace EasyAuthentication.Features.User.Handlers.Queries
+namespace EasyAuthentication.Features.UserFeatures.Handlers.Queries
 {
     public class GetUserProfileRequestHandler : IRequestHandler<GetUserProfileRequest, GetUserProfileDto>
     {

@@ -1,13 +1,16 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net7.0</TargetFramework>
+		<TargetFramework>net8.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-		<Title>EasyAuthentication</Title>
-		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-		<RepositoryUrl>https://github.com/siamakjalil/EasyAuthentication</RepositoryUrl>
+		<Title>EasyAuthentication</Title> 
+		<RepositoryUrl>https://github.com/siamakjalil/EasyAuthentication</RepositoryUrl> 
+		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile> 
+		<Product>$(AssemblyName)</Product> 
+		<Company>JumarWorld</Company> 
+		<Authors>Siamak jalili</Authors>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -23,6 +26,13 @@
 
 	<ItemGroup>
 		<Folder Include="Infrastructure\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="..\LICENSE.txt">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
 	</ItemGroup>
 
 </Project>

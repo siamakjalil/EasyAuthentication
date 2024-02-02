@@ -12,11 +12,13 @@ namespace EasyAuthentication.Configurations.Entities
             builder.HasData(
                 new Role
                 {
+                    Id = 1,
                     IsActive = true,
                     Title = RoleNames.Admin
                 },
                 new Role
                 {
+                    Id = 2,
                     IsActive = true,
                     Title = RoleNames.User
                 }

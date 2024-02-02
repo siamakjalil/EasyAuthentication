@@ -23,7 +23,7 @@ namespace EasyAuthentication.Configurations.Entities
                     UserType = (int)UserType.Real,
                     Key = key,
                     Password = "1234".EncodePassword(key),
-                    Email = "admin@admin.com"
+                    Email = "admin@admin.com",
                 }
             );
         }

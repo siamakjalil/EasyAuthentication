@@ -19,12 +19,6 @@ namespace EasyAuthentication.Configurations
         {
             services.Configure<JwtSettings>(configuration.GetSection("JwtSettings"));
 
-            services.AddDbContext<IdentityDbContext>(options =>
-            {
-                options.UseSqlServer(configuration
-                    .GetConnectionString("IdentityConnectionString"));
-            });
-
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddMediatR(c => c.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
             services.AddScoped<IAuthenticationRepository, AuthenticationRepository>();

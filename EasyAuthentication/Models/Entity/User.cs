@@ -12,7 +12,7 @@ namespace EasyAuthentication.Models.Entity
         [Key]
         public Guid Id { get; set; }
         [MaxLength(11)]
-        public string MobileNumber { get; set; }
+        public string? MobileNumber { get; set; }
         [MaxLength(150)]
         public string? FirstName { get; set; }
         [MaxLength(150)]

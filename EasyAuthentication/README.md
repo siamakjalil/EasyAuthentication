@@ -26,5 +26,9 @@ In the "Configurations" folder and IdentityServicesRegistration we have JwtSetti
 Add this config to your program.cs
 
 ```
-builder.Services.ConfigureIdentityServices(builder.Configuration);
+ builder.Services.AddDbContext<IdentityDbContext>(options =>
+ {
+     options.UseSqlServer(configuration
+         .GetConnectionString("<YOUR_CONNECTIONSTRING>"), b => b.MigrationsAssembly("<YOUR_PROJECTLAYER>")); 
+ }); 
 ```

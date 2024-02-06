@@ -30,5 +30,6 @@ Add this config to your program.cs
  {
      options.UseSqlServer(configuration
          .GetConnectionString("<YOUR_CONNECTIONSTRING>"), b => b.MigrationsAssembly("<YOUR_PROJECTLAYER>")); 
- }); 
+ });
+builder.Services.ConfigureIdentityServices(builder.Configuration);
 ```

@@ -121,4 +121,13 @@ await _mediator.Send(new DeleteRoleFromUserRequest(){Id = 1});
 
 await _mediator.Send(new AddRoleToUserRequest(){UserId = Guid.Empty , RoleId = 1});
 ```
+## How to use UserFeatures :
+```
+await _mediator.Send(new GetUserListRequest());
+await _mediator.Send(new GetUserProfileRequest(){UserId = Guid.Empty});
+await _mediator.Send(new GetUserRequest(){Id = Guid.Empty});
 
+await _mediator.Send(new UpsertUserProfileRequest(){UserDto = new UserDto()});
+await _mediator.Send(new UpdateUserProfileRequest(){UserProfileDto = new UpdateUserProfileDto()});
+await _mediator.Send(new DeleteUserProfileRequest(){RemoveUserDto = new RemoveUserDto(){UserId = Guid.Empty}});
+```

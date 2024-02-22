@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using EasyAuthentication.Contracts;
-using EasyAuthentication.Features.User.Requests.Queries;
+using EasyAuthentication.Features.UserFeatures.Requests.Queries;
 using EasyAuthentication.Models.Response;
 using MediatR;
 

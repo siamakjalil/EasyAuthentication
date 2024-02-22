@@ -11,8 +11,10 @@
 		<Product>EasyAuthentication</Product> 
 		<Company>JumarWorld</Company> 
 		<Authors>Siamak jalili</Authors> 
-		<Version>1.1.1</Version> 
-		<PackageIcon>mstile-150x150.png</PackageIcon>
+		<Version>1.2.0</Version> 
+		<PackageIcon>mstile-150x150.png</PackageIcon> 
+		<Description>EasyAuthentication is the clean and realy clear authentication and authorization service.
+</Description>
 	</PropertyGroup>
 
 	<ItemGroup>

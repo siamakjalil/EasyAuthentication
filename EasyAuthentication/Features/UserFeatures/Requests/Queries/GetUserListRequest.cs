@@ -1,10 +1,8 @@
-﻿using System.Security.AccessControl;
-
-using MediatR;
-using EasyAuthentication.Models.Request;
+﻿using EasyAuthentication.Models.Request;
 using EasyAuthentication.Models.Response;
+using MediatR;
 
-namespace EasyAuthentication.Features.User.Requests.Queries
+namespace EasyAuthentication.Features.UserFeatures.Requests.Queries
 {
     public class GetUserListRequest : IRequest<UserListDto>
     { 

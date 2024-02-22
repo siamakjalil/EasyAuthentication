@@ -2,8 +2,6 @@ using EasyAuthentication.Features.AuthenticationFeatures.Handlers.Commands;
 using EasyAuthentication.Features.AuthenticationFeatures.Requests.Commands;
 using EasyAuthentication.Features.RoleFeatures.Requests.Commands;
 using EasyAuthentication.Features.RoleFeatures.Requests.Queries;
-using EasyAuthentication.Features.User.Requests.Commands;
-using EasyAuthentication.Features.User.Requests.Queries;
 using EasyAuthentication.Features.UserFeatures.Requests.Commands;
 using EasyAuthentication.Models.Request;
 using EasyAuthentication.Models.Response;

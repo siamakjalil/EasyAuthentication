@@ -1,8 +1,7 @@
-﻿
+﻿using EasyAuthentication.Models.Response;
 using MediatR;
-using EasyAuthentication.Models.Response;
 
-namespace EasyAuthentication.Features.User.Requests.Queries
+namespace EasyAuthentication.Features.UserFeatures.Requests.Queries
 {
     public class GetUserProfileRequest : IRequest<GetUserProfileDto>
     {

@@ -1,9 +1,8 @@
-﻿
-using MediatR;
-using EasyAuthentication.Models.Request;
+﻿using EasyAuthentication.Models.Request;
 using EasyAuthentication.Models.Response;
+using MediatR;
 
-namespace EasyAuthentication.Features.User.Requests.Commands
+namespace EasyAuthentication.Features.UserFeatures.Requests.Commands
 {
     public class DeleteUserProfileRequest : IRequest<ServiceMessage>
     {

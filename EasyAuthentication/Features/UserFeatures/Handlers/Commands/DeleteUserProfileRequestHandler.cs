@@ -1,15 +1,12 @@
 ﻿using AutoMapper;
+using EasyAuthentication.Constants;
+using EasyAuthentication.Contracts;
+using EasyAuthentication.Features.UserFeatures.Requests.Commands;
 using EasyAuthentication.Models.Response;
 using EasyAuthentication.Tools;
 using MediatR;
-using EasyAuthentication.Constants;
-using EasyAuthentication.Contracts;
-using EasyAuthentication.Features.User.Requests.Commands;
-using EasyAuthentication.Models.Request;
-using EasyAuthentication.Models.Request.Validators;
-using EasyAuthentication.Repositories;
 
-namespace EasyAuthentication.Features.User.Handlers.Commands
+namespace EasyAuthentication.Features.UserFeatures.Handlers.Commands
 {
     public class DeleteUserProfileRequestHandler : IRequestHandler<DeleteUserProfileRequest, ServiceMessage>
     {

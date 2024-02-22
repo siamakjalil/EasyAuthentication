@@ -33,3 +33,71 @@ Add this config to your program.cs
  });
 builder.Services.ConfigureIdentityServices(builder.Configuration);
 ```
+
+## How to use AuthenticationFeatures :
+``` 
+// register 
+await _mediator.Send(new RegisterRequest()
+{
+    RegisterDto = new RegisterDto()
+    {
+        Email = "",
+        MobileNumber = "",
+    }
+});
+
+// send auth code to mobile 
+await _mediator.Send(new SendAuthCodeRequest()
+{
+    SendAuthCode = new SendAuthCode()
+    {
+        MobileNumber = ""
+    }
+});
+
+// login by auth code
+await _mediator.Send(new LoginByAuthCodeRequest()
+{
+    LoginByAuthCode = new LoginByAuthCode()
+    {
+        MobileNumber = "",
+        ActivationCode = ""
+    }
+});
+
+// login by pass
+await _mediator.Send(new LoginByPassRequest()
+{
+    LoginByPass = new LoginByPass()
+    {
+        Email = "",
+        MobileNumber = "",
+        Password = ""
+    }
+});
+
+// set pass 
+await _mediator.Send(new SetPassRequest()
+{
+    SetPass = new SetPass()
+    {
+        UserId = Guid.Empty,
+        Pass = "",
+        RePass = ""
+    }
+});
+
+// change pass 
+await _mediator.Send(new ChangePassRequest()
+{
+    ChangePass = new ChangePass()
+    {
+        ReNewPass = "",
+        NewPass = "",
+        CurrentPass = "",
+        UserId = Guid.Empty
+    }
+});
+```
+
+

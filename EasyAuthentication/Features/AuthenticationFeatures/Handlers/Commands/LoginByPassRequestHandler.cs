@@ -11,7 +11,7 @@ namespace EasyAuthentication.Features.AuthenticationFeatures.Handlers.Commands
 {
     public class LoginByPassRequestHandler : IRequestHandler<LoginByPassRequest, ServiceMessage>
     {
-        private readonly IAuthenticationRepository _authenticationRepository; 
+        private readonly IAuthenticationRepository _authenticationRepository;
         private readonly IConfiguration _configuration;
         private readonly WebTools _webTools;
 
@@ -30,13 +30,16 @@ namespace EasyAuthentication.Features.AuthenticationFeatures.Handlers.Commands
             {
                 return ResponseManager.DataError(string.Join(",", validationResult.Errors.ToList()));
             }
-            request.LoginByPass.MobileNumber = request.LoginByPass.MobileNumber;
-            if (string.IsNullOrEmpty(request.LoginByPass.MobileNumber))
+            if (!string.IsNullOrEmpty(request.LoginByPass.MobileNumber))
             {
-                return ResponseManager.DataError(IdentityMessages.WrongMobile);
+                request.LoginByPass.MobileNumber = request.LoginByPass.MobileNumber;
+                if (string.IsNullOrEmpty(request.LoginByPass.MobileNumber))
+                {
+                    return ResponseManager.DataError(IdentityMessages.WrongMobile);
+                }
             }
             var model = await _authenticationRepository.LoginByPass(request.LoginByPass, _webTools.GetBrowser(), _webTools.GetRealIp());
-            if (model==null)
+            if (model == null)
             {
                 return ResponseManager.DataError(IdentityMessages.WrongMobile);
             }

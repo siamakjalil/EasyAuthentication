@@ -99,5 +99,26 @@ await _mediator.Send(new ChangePassRequest()
     }
 });
 ```
+## How to use RoleFeatures :
+```
+await _mediator.Send(new GetRoleListRequest(){});
+await _mediator.Send(new GetRoleRequest() { Id = 1 });
+await _mediator.Send(new GetUserRolesRequest() { Id = Guid.Empty});
 
+// add or update role
+await _mediator.Send(new UpsertRoleRequest()
+{
+    RoleDto = new RoleDto()
+    { 
+        Title = "role"
+    }
+});
+
+// pass roleId
+await _mediator.Send(new DeleteRoleRequest(){Id = 1});
+// pass userRoleId
+await _mediator.Send(new DeleteRoleFromUserRequest(){Id = 1});
+
+await _mediator.Send(new AddRoleToUserRequest(){UserId = Guid.Empty , RoleId = 1});
+```
 

@@ -11,10 +11,11 @@
 		<Product>EasyAuthentication</Product> 
 		<Company>JumarWorld</Company> 
 		<Authors>Siamak jalili</Authors> 
-		<Version>1.2.0</Version> 
+		<Version>1.2.2</Version> 
 		<PackageIcon>mstile-150x150.png</PackageIcon> 
 		<Description>EasyAuthentication is the clean and realy clear authentication and authorization service.
-</Description>
+</Description> 
+		<PackageReleaseNotes>Upsert user bug fixed </PackageReleaseNotes>
 	</PropertyGroup>
 
 	<ItemGroup>

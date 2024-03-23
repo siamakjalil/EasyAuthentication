@@ -24,13 +24,14 @@ namespace EasyAuthentication.Models.Request.Validators
                 .MaximumLength(150).WithMessage($"MaximumLength is 150");
 
             RuleFor(u => u.MobileNumber)
-                .NotEmpty().WithMessage(IdentityMessages.RequiredMobileNumber)
-                .NotNull().WithMessage(IdentityMessages.RequiredMobileNumber)
+                .NotEmpty().When(m => string.IsNullOrEmpty(m.Email)).WithMessage(IdentityMessages.RequiredMobileNumber)
+                .NotNull().When(m => string.IsNullOrEmpty(m.Email)).WithMessage(IdentityMessages.RequiredMobileNumber)
                 .MaximumLength(150).WithMessage($"MaximumLength is 150");
-
-            //RuleFor(u => u.Email).NotEmpty().WithMessage(IdentityMessages.Email).NotNull().WithMessage(IdentityMessages.Email)
-            //    .MaximumLength(150).WithMessage($"MaximumLength is 150")
-            //    .EmailAddress().WithMessage(IdentityMessages.EmailNotValid);
+            
+            RuleFor(u => u.Email)
+                .NotEmpty().When(m => string.IsNullOrEmpty(m.MobileNumber)).WithMessage(IdentityMessages.RequiredEmail)
+                .NotNull().When(m => string.IsNullOrEmpty(m.MobileNumber)).WithMessage(IdentityMessages.RequiredEmail)
+                .EmailAddress().WithMessage(IdentityMessages.EmailNotValid); 
 
             RuleFor(u => u.UserType)
                 .GreaterThan(0).WithMessage(IdentityMessages.UserTypeError)

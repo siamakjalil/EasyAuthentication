@@ -30,7 +30,11 @@ namespace EasyAuthentication.Features.UserFeatures.Handlers.Commands
             }
 
             var upsertUser = request.UserDto;
-            if (await _userRepository.Exist(upsertUser.MobileNumber, upsertUser.Id))
+            if (!string.IsNullOrEmpty(upsertUser.MobileNumber) && await _userRepository.Exist(upsertUser.MobileNumber, upsertUser.Id))
+            {
+                return ResponseManager.DataError(IdentityMessages.ExistMobile);
+            }
+            if (!string.IsNullOrEmpty(upsertUser.Email) && await _userRepository.ExistByEmail(upsertUser.Email, upsertUser.Id))
             {
                 return ResponseManager.DataError(IdentityMessages.ExistMobile);
             }

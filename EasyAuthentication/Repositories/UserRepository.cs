@@ -49,6 +49,16 @@ namespace EasyAuthentication.Repositories
             }
             return await query.CountAsync();
         }
+
+        public async Task<User> FirstOrDefault(Expression<Func<User, bool>>? where = null)
+        {
+            var dbSet = _context.Set<User>();
+            IQueryable<User> query = dbSet;
+            if (where == null) return null;
+            query = query.Where(where); 
+            return await query.FirstOrDefaultAsync();
+        }
+
         public async Task<User> GetProfile(Guid userId)
         {
             var model = await _context.Users.FindAsync(userId);
@@ -81,5 +91,9 @@ namespace EasyAuthentication.Repositories
             return await _context.Users.AnyAsync(u => u.MobileNumber == mobileNumber && (id == Guid.Empty || u.Id != id));
         }
 
+        public async Task<bool> ExistByEmail(string email, Guid id)
+        {
+            return await _context.Users.AnyAsync(u => u.MobileNumber == email && (id == Guid.Empty || u.Id != id));
+        }
     }
 }
